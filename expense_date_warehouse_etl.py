@@ -798,8 +798,9 @@ def full_load(engine):
 
         fact_build_load(df, dim_department_db, dim_employee_db, dim_date_db, engine)
     
-    except Exception as e:
+    except Exception:
         logging.exception("FULL LOAD FAILED")
+        raise
 
 
 def incremental_load(engine):
@@ -822,8 +823,9 @@ def incremental_load(engine):
 
         changing_existing_facts(fact_expense, existing_expense_ids, engine, fact_db)
 
-    except Exception as e:
+    except Exception:
         logging.exception("INCREMENTAL LOAD FAILED")
+        raise
 
 
 def main():
